@@ -1,90 +1,100 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import Carousel from '@/components/Carousel'
+import { TopNav } from '@/components/TopNav'
+import { EntityPellete } from '@/components/EntityPallete'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const dataCards = [{name: 'Sunsetta'}, {name: 'Apple'}, {name: 'Berry'}, {name: 'Watermelon'}, {name: 'Pizaa'}, {name: "Jade Parcels"}, {name: "Sango Pearl"}, {name: "Razor"}]
+  const entities = [
+    {
+      name: "A Restaurant",
+      logo: "",
+      cuisines: ["South Indian, Maharashtrian"],
+      ratings: "3.5",
+      deliveryTime: "",
+      liveDiscounts: "50% Off up to 200",
+      averagePrice: "250"
+    },
+    {
+      name: "B Restaurant",
+      logo: "",
+      cuisines: ["South Indian, North Indian"],
+      ratings: "2",
+      deliveryTime: "",
+      liveDiscounts: "50% Off up to 100",
+      averagePrice: "100"
+    },
+    {
+      name: "C Restaurant",
+      logo: "",
+      cuisines: ["Chinese, Asian"],
+      ratings: "5",
+      deliveryTime: "",
+      liveDiscounts: "30% Off up to 200",
+      averagePrice: "500"
+    },
+    {
+      name: "D Restaurant",
+      logo: "",
+      cuisines: ["South Indian, North Indian, Maharashtrian"],
+      ratings: "4.9",
+      deliveryTime: "",
+      liveDiscounts: "10% Off up to 50",
+      averagePrice: "100"
+    },
+    {
+      name: "E Restaurant",
+      logo: "",
+      cuisines: ["Snacks, Maharashtrian"],
+      ratings: "4.8",
+      deliveryTime: "",
+      liveDiscounts: "10% Off up to 100",
+      averagePrice: "50"
+    },
+    {
+      name: "F Restaurant",
+      logo: "3.7",
+      cuisines: ["Italian"],
+      ratings: "",
+      deliveryTime: "",
+      liveDiscounts: "20% Off",
+      averagePrice: "900"
+    },
+    {
+      name: "G Restaurant",
+      logo: "",
+      cuisines: ["Thai, Chinese, Asian"],
+      ratings: "2.4",
+      deliveryTime: "",
+      liveDiscounts: "50% Off up to 200",
+      averagePrice: "250"
+    },
+    {
+      name: "H Restaurant",
+      logo: "",
+      cuisines: ["Chinese, Japanese, Asian"],
+      ratings: "5",
+      deliveryTime: "",
+      liveDiscounts: "50% Off up to 400",
+      averagePrice: "700"
+    }
+  ]
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    <main className="flex justify-center">
+      <div className="flex flex-col max-w-screen-xl justify-center">
+        <div className="max-w-screen-xl">
+            <TopNav />
+          </div>
+          <div className="max-w-screen-xl">
+            <Carousel dataCards = {dataCards}/>
+          </div>
+          <div className="max-w-screen-xl mt-4">
+            <EntityPellete entities={entities} />
+          </div>
       </div>
     </main>
   )
