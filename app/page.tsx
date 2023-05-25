@@ -86,13 +86,13 @@ export default function Home() {
   return (
     <main className="flex justify-center">
       <div className="flex flex-col max-w-screen-xl justify-center">
-        <div className="max-w-screen-xl">
+        <div className="w-full">
             <TopNav />
           </div>
-          <div className="max-w-screen-xl">
+          <div className="w-full">
             <Carousel dataCards = {dataCards}/>
           </div>
-          <div className="max-w-screen-xl mt-4">
+          <div className="w-full mt-4">
             <EntityPellete entities={entities} />
           </div>
       </div>
