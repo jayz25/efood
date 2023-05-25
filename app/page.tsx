@@ -85,7 +85,7 @@ export default function Home() {
   ]
   return (
     <main className="flex justify-center">
-      <div className="flex flex-col max-w-screen-xl justify-center">
+      <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
         <div className="w-full">
             <TopNav />
           </div>
