@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Entity } from "./Entity";
 
 export const EntityPellete = ({ entities }) => {
@@ -9,7 +10,9 @@ export const EntityPellete = ({ entities }) => {
                 return (
                     // Make sure to add key here
                     <div className="basis-1/3">
-                        <Entity entity={entity}/>
+                        <Link href={`restaurent/${entity.id}`}>
+                            <Entity entity={entity}/>
+                        </Link>
                     </div>
 
                     )
