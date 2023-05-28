@@ -1,7 +1,13 @@
+'use client';
+
 import RestaurentMenu from "@/components/RestaurentMenu";
+import { store } from "@/redux/store";
+import { Provider } from 'react-redux';
 
 export default function Home() {
   return (
+    <Provider store={store}>
+
     <div className="flex justify-center">
       <div className="flex w-full xl:max-w-screen-xl flex-col">
         <div className="food-slideshow-container h-64 bg-neutral-200 w-full mt-2">
@@ -27,5 +33,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </Provider>
   );
 }

@@ -1,9 +1,12 @@
+'use client';
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import Carousel from "@/components/Carousel";
 import { TopNav } from "@/components/TopNav";
 import { EntityPellete } from "@/components/EntityPallete";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,15 +104,17 @@ export default function Home() {
     },
   ];
   return (
-    <main className="flex justify-center">
-      <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
-        <div className="w-full">
-          <Carousel dataCards={dataCards} />
+    <Provider store={store}>
+      <main className="flex justify-center">
+        <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
+          <div className="w-full">
+            <Carousel dataCards={dataCards} />
+          </div>
+          <div className="w-full mt-4">
+            <EntityPellete entities={entities} />
+          </div>
         </div>
-        <div className="w-full mt-4">
-          <EntityPellete entities={entities} />
-        </div>
-      </div>
-    </main>
+      </main>
+    </Provider>
   );
 }
