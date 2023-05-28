@@ -33,7 +33,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex flex-col border-solid border-2 rounded-lg shadow-xl">
+    <div className="relative flex-col border-solid border-2 rounded-lg shadow-xl">
       <input
         id="search-location__input"
         className="border-solid border-2 p-2 rounded-lg"
@@ -42,7 +42,7 @@ export default function SearchBar() {
         onFocus={() => setIsLocationOptionOpen(true)}
         onBlur={() => setIsLocationOptionOpen(false)}
       />
-      <div className="flex flex-col search-dropdown__content max-h-48 overflow-y-auto">
+      <div className="absolute top-12 flex flex-col search-dropdown__content max-h-48 overflow-y-auto bg-neutral-400 w-full z-10 rounded-bl-lg rounded-br-lg">
         {isLocationOptionOpen &&
           searchOptions
             .filter((option) => option.toLowerCase().startsWith(searchString.toLowerCase()))
