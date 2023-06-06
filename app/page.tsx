@@ -3,14 +3,14 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import Carousel from "@/components/Carousel";
-import { TopNav } from "@/components/TopNav";
 import { EntityPellete } from "@/components/EntityPallete";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
+import CheckoutBar from "@/components/CheckoutBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Page() {
   const dataCards = [
     { name: "Sunsetta" },
     { name: "Apple" },
@@ -114,6 +114,7 @@ export default function Home() {
             <EntityPellete entities={entities} />
           </div>
         </div>
+        <CheckoutBar />
       </main>
     </Provider>
   );

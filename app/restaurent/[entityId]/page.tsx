@@ -1,5 +1,6 @@
 'use client';
 
+import CheckoutBar from "@/components/CheckoutBar";
 import RestaurentMenu from "@/components/RestaurentMenu";
 import { store } from "@/redux/store";
 import { Provider } from 'react-redux';
@@ -33,6 +34,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <CheckoutBar />
     </Provider>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import CarouselCard from "./CarouselCard";
 
 export default function Carousel({ dataCards }) {
@@ -30,7 +31,11 @@ export default function Carousel({ dataCards }) {
       </button>
       <div className="carousel-main-container flex flex-row overflow-hidden">
         {dataCards?.map((card, index) => {
-          return <CarouselCard cardInfo={card} />;
+          return (
+            <Link href={`restaurents/${card.name}`}>
+              <CarouselCard cardInfo={card} />
+            </Link>
+          );
         })}
       </div>
       <button
