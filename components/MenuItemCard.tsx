@@ -5,12 +5,16 @@ import {
   incrementQuantity,
   removeItem,
 } from "@/redux/cartSlice";
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, RootState } from "@/redux/store";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MenuItemCard({ menuItem }) {
-  const [quantity, setQuantity] = useState(0);
+  const getCart = useSelector((state: RootState)=> state.cartItems.cart);
+
+  const getItemFromCart = getCart.find((cartItem) => cartItem.id === menuItem.id)
+  const quantityAlreadyPresent = getItemFromCart && getItemFromCart.quantity
+  const [quantity, setQuantity] = useState(quantityAlreadyPresent || 0);
   const dispatch = useDispatch<AppDispatch>();
 
   const reduceQuantity = () => {
