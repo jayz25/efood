@@ -1,5 +1,9 @@
 "use client";
+import { stateType } from "@/redux/cartSlice";
+import { setLocation } from "@/redux/locationSlice";
+import { AppDispatch, RootState } from "@/redux/store";
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchBar() {
   const [searchOptions, setSearchOptions] = useState([
@@ -19,6 +23,8 @@ export default function SearchBar() {
     "Jamshedpur",
     "Chandigardh",
   ]);
+  const dispatch = useDispatch<AppDispatch>();
+
   const [searchString, setSearchString] = useState<string>("");
   const [isLocationOptionOpen, setIsLocationOptionOpen] =
     useState<boolean>(false);
@@ -26,6 +32,12 @@ export default function SearchBar() {
   const selectFromDropdown = (selectedOption: string) => {
     setSearchString(selectedOption);
     setIsLocationOptionOpen(false);
+    
+    dispatch(
+      setLocation({
+        location: selectedOption,
+      })
+    );
   }
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsLocationOptionOpen(true);

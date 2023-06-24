@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { Entity } from "./Entity";
 
-export const EntityPellete = ({ entities }) => {
+export const EntityPellete = (entities) => {
+    console.log(
+        "Entities: ", entities
+    )
     return (
         <div className="w-full flex flex-wrap">
             {entities?.map((entity) => {
