@@ -10,7 +10,12 @@ import CheckoutBar from "@/components/CheckoutBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Page() {
+async function getRestaurentEntities(location: string) {
+  const res = await fetch(`http://localhost:8000/api/restaurents/${location}/`);
+  return res.json();
+}
+
+export default async function Page() {
   const dataCards = [
     { name: "Sunsetta" },
     { name: "Apple" },
@@ -103,6 +108,11 @@ export default function Page() {
       averagePrice: "700",
     },
   ];
+
+  const restaurentsEntities = getRestaurentEntities('Mumbai');
+  const [restaurents] = await Promise.
+
+  console.log('restaurents:', restaurents);
   return (
     <Provider store={store}>
       <main className="flex justify-center">
@@ -111,7 +121,7 @@ export default function Page() {
             <Carousel dataCards={dataCards} />
           </div>
           <div className="w-full mt-4">
-            <EntityPellete entities={entities} />
+            <EntityPellete entities={restaurents} />
           </div>
         </div>
         <CheckoutBar />
