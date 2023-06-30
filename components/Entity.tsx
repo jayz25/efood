@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 
-export const Entity = (props) => {
-    const { entity } = props;
+export const Entity = ({entity}) => {
     console.log('Entity', entity)
     // What we want:
     // Image background (not stretched)

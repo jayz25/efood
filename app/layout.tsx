@@ -1,5 +1,6 @@
 import { TopNav } from '@/components/TopNav'
 import './globals.css'
+import AppProvider from '@/providers/provider'
 
 export default function RootLayout({
   children,
@@ -15,8 +16,10 @@ export default function RootLayout({
 
       <head />
       <body>
-        <TopNav />
+        <AppProvider>
+          <TopNav />
           {children}
+        </AppProvider>
       </body>
     </html>
   )

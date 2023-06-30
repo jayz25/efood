@@ -3,13 +3,10 @@
 import Link from "next/link";
 import { Entity } from "./Entity";
 
-export const EntityPellete = (entities) => {
-    console.log(
-        "Entities: ", entities
-    )
+export const EntityPellete = ({restaurents}) => {
     return (
         <div className="w-full flex flex-wrap">
-            {entities?.map((entity) => {
+            {restaurents?.map((entity) => {
                 return (
                     // Make sure to add key here
                     <div className="basis-1/3">
