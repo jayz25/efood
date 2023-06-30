@@ -1,12 +1,10 @@
 'use client';
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
 import Carousel from "@/components/Carousel";
 import { EntityPellete } from "@/components/EntityPallete";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
 import CheckoutBar from "@/components/CheckoutBar";
+import { useEffect, useState } from "react";
+import AppProvider from "@/providers/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +13,9 @@ async function getRestaurentEntities(location: string) {
   return res.json();
 }
 
-export default async function Page() {
+
+
+export default function Page() {
   const dataCards = [
     { name: "Sunsetta" },
     { name: "Apple" },
@@ -109,23 +109,30 @@ export default async function Page() {
     },
   ];
 
-  const restaurentsEntities = getRestaurentEntities('Mumbai');
-  const [restaurents] = await Promise.
+  const [restaurents, setRestaurents] = useState([]);  
+  // Find a better way to fetch data 
+    useEffect(() => {
+      async function fetchData() {
+        const restaurentsData = getRestaurentEntities('Mumbai');
+        const [resto] = await Promise.all([restaurentsData])
+        setRestaurents(resto);
+      }
+      fetchData();
+    }, []);
 
-  console.log('restaurents:', restaurents);
   return (
-    <Provider store={store}>
+    <AppProvider>
       <main className="flex justify-center">
         <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
           <div className="w-full">
             <Carousel dataCards={dataCards} />
           </div>
           <div className="w-full mt-4">
-            <EntityPellete entities={restaurents} />
+            <EntityPellete restaurents={restaurents} />
           </div>
         </div>
         <CheckoutBar />
       </main>
-    </Provider>
+    </AppProvider>
   );
 }
