@@ -1,8 +1,8 @@
 'use client';
 export default function Home() {
     return (
-        <div className="">
-            A Box
+        <div className="text-2xl">
+            Page not found
         </div>
     )
 }

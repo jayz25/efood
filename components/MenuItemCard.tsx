@@ -8,8 +8,23 @@ import {
 import { AppDispatch, RootState } from "@/redux/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Url } from "url";
 
-export default function MenuItemCard({ menuItem }) {
+export interface Dish {
+  id: string,
+  name: string,
+  price: number,
+  ratings: number,
+  servings: string,
+  image_url: Url,
+}
+
+interface MenuItemCardProps {
+  menuItemArray: Dish[]
+}
+
+export default function MenuItemCard({ menuItemArray }: MenuItemCardProps) {
+  const menuItem = menuItemArray[0]; // Make this better
   const getCart = useSelector((state: RootState)=> state.cartItems.cart);
 
   const getItemFromCart = getCart.find((cartItem) => cartItem.id === menuItem.id)
@@ -61,8 +76,8 @@ export default function MenuItemCard({ menuItem }) {
       <div className="item-menu-info flex flex-col w-4/5">
         <div className="flex flex-col">
           <p className="text-xl">{menuItem.name}</p>
-          <p>Serves two</p>
-          <p>⭐3.5</p>
+          <p className="text-sm">Serves {menuItem.servings}</p>
+          <p>⭐{menuItem.ratings}</p>
         </div>
       </div>
       <div className="relative items-center flex flex-row justify-end self-end p-2">
