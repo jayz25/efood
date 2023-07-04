@@ -1,8 +1,12 @@
-"use client";
+// "use client";
 
 import MenuCard from "./MenuCard";
 
-export default function RestaurentMenu() {
+async function getMenu(menuId) {
+  const fetchMenu = await fetch(`http://127.0.0.1:8000/api/menu/${menuId}/`);
+  return fetchMenu.json();
+}
+export default async function RestaurentMenu({menuId}) {
   const menuItems = [
     {
       id: "m1",
@@ -41,12 +45,17 @@ export default function RestaurentMenu() {
       pic: "",
     },
   ];
+
+  const fetchedMenu = getMenu(menuId)
+  const [menu] = await Promise.all([fetchedMenu])
+  
   return (
     <>
     <div className="w-full flex justify-center">
       <p className="text-2xl font-medium">Menu</p>
     </div>
-      <MenuCard menuItems={menuItems} />
+    {/* Make this menu[0] better, doesn't seem to be a good practice everytime accessing .[0] */}
+      <MenuCard menuItems={menu[0].dishes} />
     </>
   );
 }

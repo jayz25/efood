@@ -1,6 +1,7 @@
 import { TopNav } from '@/components/TopNav'
 import './globals.css'
 import AppProvider from '@/providers/provider'
+import CheckoutBar from '@/components/CheckoutBar'
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
           {children}
         </AppProvider>
       </body>
+
     </html>
   )
 }

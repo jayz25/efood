@@ -5,6 +5,8 @@ import { EntityPellete } from "@/components/EntityPallete";
 import CheckoutBar from "@/components/CheckoutBar";
 import { useEffect, useState } from "react";
 import AppProvider from "@/providers/provider";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -109,16 +111,17 @@ export default function Page() {
     },
   ];
 
+  const location = useSelector((state: RootState)=> state.location.location);
   const [restaurents, setRestaurents] = useState([]);  
   // Find a better way to fetch data 
     useEffect(() => {
       async function fetchData() {
-        const restaurentsData = getRestaurentEntities('Mumbai');
+        const restaurentsData = getRestaurentEntities(location);
         const [resto] = await Promise.all([restaurentsData])
         setRestaurents(resto);
       }
       fetchData();
-    }, []);
+    }, [location]);
 
   return (
     <AppProvider>

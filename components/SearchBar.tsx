@@ -23,7 +23,7 @@ export default function SearchBar() {
     "Jamshedpur",
     "Chandigardh",
   ]);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();  
 
   const [searchString, setSearchString] = useState<string>("");
   const [isLocationOptionOpen, setIsLocationOptionOpen] =
@@ -34,9 +34,9 @@ export default function SearchBar() {
     setIsLocationOptionOpen(false);
     
     dispatch(
-      setLocation({
-        location: selectedOption,
-      })
+      setLocation(
+        selectedOption,
+      )
     );
   }
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {

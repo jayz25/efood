@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
-export const Entity = ({entity}) => {
-    console.log('Entity', entity)
+export const Entity = ({ entity }) => {
     // What we want:
     // Image background (not stretched)
     // Details 
@@ -14,22 +14,37 @@ export const Entity = ({entity}) => {
     // -- Delivery time (Font-III) [Float on top right of Img]
     // -- Live discounts (Font -III) [Float above details section right side]
     return (
-            <div className="p-4 h-72">
-                <div className="flex bg-slate-200 h-full w-full flex-col rounded-lg">
-                    <div className="flex h-3/5 bg-slate-100 w-full rounded-tr-lg rounded-tl-lg">
-                        Img
+        <div className="p-5 h-80 hover:p-4 transition duration-300 ease-out hover:ease-in">
+            <div className="flex bg-cover bg-center h-full w-full flex-col justify-end rounded-lg hover:shadow-2xl"
+            style={{ backgroundImage: `url(${entity.image_url})`}}>
+                <div className="restaurant-info-container bg-slate-300 bg-opacity-95  flex h-2/5 w-full flex-col p-2 rounded-br-lg rounded-bl-lg">
+                    <div className="font-medium text-2xl">{entity.name}</div>
+                    <div className="font-medium text-sm">
+                        {/* TODO: Find a better way to achieve this comma and space thing for entities */}
+                        {entity.cuisines.map((cuisine, index)=> {
+                            if (index !== entity.cuisines.length - 1) {
+                                return (
+                                    `${cuisine}, `
+                                    )
+                            }
+                            else {
+                                return (
+                                    `${cuisine} `
+                                )
+                            }
+                        })}
                     </div>
-                    <div className="flex h-2/5 bg-slate-300 w-full flex-col p-2 rounded-br-lg rounded-bl-lg">
-                        {/* Bigger strong font */}
-                        <div className="font-medium text-lg">{entity.name}</div>
-                        {/* A bit smaller less strong font */}
-                        <div className="font-light text-sm">{entity.cuisines}</div>
-                        <div className="font-light text-sm flex flex-row justify-between pt-1/2">
-                            <p>{entity.ratings}</p>
-                            <p>{entity.averagePrice} for one</p>
-                        </div>
+                    <div className="flex flex-row justify-between pt-1/2">
+                        <p className="font-medium text-md">{entity.ratings} ⭐</p>
+                        <p className="text-sm">₹{`${entity.average_price}`} for one</p>
+                    </div>
+                    <div className="flex flex-row justify-between">
+                        <p className="text-sm font-light bg-green-700 py-1/2 px-2 text-white rounded-lg">{entity.live_discounts}</p>
+                        <p className="text-sm font-light justify-self-end">⌛{`${entity.delivery_time}`} mins</p>
                     </div>
                 </div>
             </div>
+        </div>
+
     )
 }
