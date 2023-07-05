@@ -15,7 +15,10 @@ async function getRestaurentEntities(location: string) {
   return res.json();
 }
 
-
+async function getCuisines() {
+  const fetchCuisines = await fetch(`http://127.0.0.1:8000/api/cuisines/`);
+  return fetchCuisines.json();
+}
 
 export default function Page() {
   const dataCards = [
@@ -113,12 +116,17 @@ export default function Page() {
 
   const location = useSelector((state: RootState)=> state.location.location);
   const [restaurents, setRestaurents] = useState([]);  
+  const [cuisines, setCuisines] = useState([]);
+
   // Find a better way to fetch data 
     useEffect(() => {
       async function fetchData() {
         const restaurentsData = getRestaurentEntities(location);
-        const [resto] = await Promise.all([restaurentsData])
+        const cuisineData = getCuisines();
+        const [resto, cuisines] = await Promise.all([restaurentsData, cuisineData])
+        // const [cuisines] = await Promise.all([cuisineData]);
         setRestaurents(resto);
+        setCuisines(cuisines);
       }
       fetchData();
     }, [location]);
@@ -128,7 +136,7 @@ export default function Page() {
       <main className="flex justify-center">
         <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
           <div className="w-full">
-            <Carousel dataCards={dataCards} />
+            <Carousel cuisines={cuisines} />
           </div>
           <div className="w-full mt-4">
             <EntityPellete restaurents={restaurents} />

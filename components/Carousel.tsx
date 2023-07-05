@@ -1,8 +1,11 @@
-"use client";
+'use client';
+
 import Link from "next/link";
 import CarouselCard from "./CarouselCard";
 
-export default function Carousel({ dataCards }) {
+
+export default function Carousel({ cuisines }) {
+
   const handlePreviousButtonClick = () => {
     const wrapperEl = document.querySelector(".carousel-main-container");
     wrapperEl?.scrollBy({
@@ -22,28 +25,40 @@ export default function Carousel({ dataCards }) {
   };
 
   return (
-    <div className="relative flex mt-16 bg-zinc-200 rounded-md ">
-      <button
-        className="absolute top-24 w-8 h-8 rounded-2xl bg-orange-50 shadow-lg previous-carousel-button"
-        onClick={handlePreviousButtonClick}
-      >
-        P
-      </button>
+    <div className="relative flex mt-16 rounded-md py-1">
+      {/* This conditional render is temporary fix for the issue which causes only buttons to render till data is available to render
+          Need a good solution on this */}
+      {
+        cuisines.length > 0 &&
+          <button
+            className="absolute top-24 w-8 h-8 rounded-2xl bg-slate-700 shadow-lg previous-carousel-button z-10 text-white"
+            onClick={handlePreviousButtonClick}
+          >
+            {/* Use icon here */}
+            {'<'} 
+        </button>
+      }
       <div className="carousel-main-container flex flex-row overflow-hidden">
-        {dataCards?.map((card, index) => {
+        {cuisines.map((card, index) => {
           return (
-            <Link href={`restaurents/${card.name}`}>
+            <Link href={`restaurents/${card.cuisine}`}>
               <CarouselCard cardInfo={card} />
             </Link>
           );
         })}
       </div>
-      <button
-        className="absolute top-24 right-0 w-8 h-8 rounded-2xl bg-orange-50 shadow-lg next-carousel-button"
-        onClick={handleNextButtonClick}
-      >
-        N
-      </button>
+      {/* This conditional render is temporary fix for the issue which causes only buttons to render till data is available to render
+          Need a good solution on this */}
+      {
+        cuisines.length > 0 &&
+        <button
+          className="absolute top-24 right-0 w-8 h-8 rounded-2xl bg-slate-700 shadow-lg next-carousel-button z-10 text-white"
+          onClick={handleNextButtonClick}
+        >
+          {/* Use icon here */}
+          {'>'}
+        </button>
+      }
     </div>
   );
 }
