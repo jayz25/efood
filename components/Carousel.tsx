@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import CarouselCard from "./CarouselCard";
+import Image from "next/image";
 
 
 export default function Carousel({ cuisines }) {
@@ -31,11 +32,14 @@ export default function Carousel({ cuisines }) {
       {
         cuisines.length > 0 &&
           <button
-            className="absolute top-24 w-8 h-8 rounded-2xl bg-slate-700 shadow-lg previous-carousel-button z-10 text-white"
+            className="absolute top-24 w-8 h-8 rounded-2xl bg-white shadow-lg previous-carousel-button z-10 text-white"
             onClick={handlePreviousButtonClick}
           >
-            {/* Use icon here */}
-            {'<'} 
+            <Image
+            src="/arrow-left-circle.svg"
+            alt="Next"
+            fill={true}
+            /> 
         </button>
       }
       <div className="carousel-main-container flex flex-row overflow-hidden">
@@ -52,11 +56,14 @@ export default function Carousel({ cuisines }) {
       {
         cuisines.length > 0 &&
         <button
-          className="absolute top-24 right-0 w-8 h-8 rounded-2xl bg-slate-700 shadow-lg next-carousel-button z-10 text-white"
+          className="absolute top-24 right-0 w-8 h-8 rounded-2xl bg-white shadow-lg next-carousel-button z-10 text-white"
           onClick={handleNextButtonClick}
         >
-          {/* Use icon here */}
-          {'>'}
+          <Image
+            src="/arrow-right-circle.svg"
+            alt="Next"
+            fill={true}
+            />
         </button>
       }
     </div>

@@ -1,8 +1,8 @@
 "use client";
-import { stateType } from "@/redux/cartSlice";
 import { setLocation } from "@/redux/locationSlice";
 import { AppDispatch, RootState } from "@/redux/store";
-import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import Image from "next/image";
+import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchBar() {
@@ -24,7 +24,7 @@ export default function SearchBar() {
     "Chandigardh",
   ]);
   const dispatch = useDispatch<AppDispatch>();  
-
+  const selectedLocation = useSelector((state:RootState) => state.location.location);
   const [searchString, setSearchString] = useState<string>("");
   const [isLocationOptionOpen, setIsLocationOptionOpen] =
     useState<boolean>(false);
@@ -45,23 +45,32 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="relative flex-col border-solid border-2 rounded-lg shadow-xl">
+    <div className="relative flex-col border-solid border-2 rounded-lg shadow-xl ml-4 bg-white">
+      <div className="flex flex-row px-1">
+          <Image
+            src={"/location-pin.svg"}
+            alt="location"
+            width={20}
+            height={20}
+            />
       <input
         id="search-location__input"
-        className="border-solid border-2 p-2 rounded-lg"
+        className="border-solid p-2 rounded-lg focus:outline-none"
         value={searchString}
         onChange={onSearchChange}
         onFocus={() => setIsLocationOptionOpen(true)}
         onBlur={() => setIsLocationOptionOpen(false)}
-      />
-      <div className="absolute top-12 flex flex-col search-dropdown__content max-h-48 overflow-y-auto bg-neutral-400 w-full z-10 rounded-bl-lg rounded-br-lg">
+        placeholder={selectedLocation ? `${selectedLocation}` : 'Location'}
+        />
+        </div>
+      <div className="absolute top-12 flex flex-col search-dropdown__content max-h-48 overflow-y-auto bg-neutral-200 w-full z-50 rounded-bl-lg rounded-br-lg">
         {isLocationOptionOpen &&
           searchOptions
             .filter((option) => option.toLowerCase().startsWith(searchString.toLowerCase()))
             .map((option, index) => {
               return (
-                <div key={option + index} className="px-2 py-1 hover:bg-[#E8E2E2]">
-                  <button className="w-full h-full text-start" onMouseDown={() => selectFromDropdown(option)}>{option}</button>
+                <div key={option + index} className="px-2 py-1 hover:bg-slate-700 hover:text-white">
+                  <button className="w-full h-full text-start font-medium" onMouseDown={() => selectFromDropdown(option)}>{option}</button>
                 </div>
               )
             })}
