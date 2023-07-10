@@ -1,11 +1,6 @@
-// 'use client'
 import CheckoutBar from "@/components/CheckoutBar";
 import RestaurentMenu from "@/components/RestaurentMenu";
-import AppProvider from "@/providers/provider";
-import { store } from "@/redux/store";
 import Image from "next/image";
-// import { useEffect, useState } from "react";
-import { Provider } from 'react-redux';
 
 
 async function getRestaurentInfo(restaurentId) {
@@ -29,7 +24,6 @@ export default async function Home({ params }) {
   //   fetchData();
   // }, [restaurentInfo]);
 
-  console.log('reat', resto[0])
   return (
     <>
       <div className="flex justify-center">
