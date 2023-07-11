@@ -26,7 +26,7 @@ export default function Carousel({ cuisines }) {
   };
 
   return (
-    <div className="relative flex mt-16 rounded-md py-1">
+    <div className="relative flex mt-20 rounded-md py-1">
       {/* This conditional render is temporary fix for the issue which causes only buttons to render till data is available to render
           Need a good solution on this */}
       {

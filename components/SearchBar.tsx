@@ -45,7 +45,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="relative flex-col border-solid border-2 rounded-lg shadow-xl ml-4 bg-white">
+    <div className="relative flex-col border-solid border-2 rounded-lg shadow-xl ml-4 bg-white mb-2 md:mb-0">
       <div className="flex flex-row px-1">
           <Image
             src={"/location-pin.svg"}
@@ -55,7 +55,7 @@ export default function SearchBar() {
             />
       <input
         id="search-location__input"
-        className="border-solid p-2 rounded-lg focus:outline-none"
+        className="border-solid p-1 md:p-2 rounded-lg focus:outline-none"
         value={searchString}
         onChange={onSearchChange}
         onFocus={() => setIsLocationOptionOpen(true)}
