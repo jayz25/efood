@@ -9,19 +9,9 @@ export default function SearchBar() {
   const [searchOptions, setSearchOptions] = useState([
     "Mumbai",
     "Pune",
-    "Aurangabad",
-    "Nashik",
+    "Kolkata",
     "Delhi",
     "Bangalore",
-    "Kolkata",
-    "Dehradun",
-    "Ahmednagar",
-    "Nagpur",
-    "Jammu",
-    "Jalgaon",
-    "Jaisalmer",
-    "Jamshedpur",
-    "Chandigardh",
   ]);
   const dispatch = useDispatch<AppDispatch>();  
   const selectedLocation = useSelector((state:RootState) => state.location.location);

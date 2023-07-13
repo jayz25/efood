@@ -72,9 +72,10 @@ export default function MenuItemCard({ menuItemArray }: MenuItemCardProps) {
 
   return (
     <div className="h-36 flex flex-row bg-neutral-100 rounded-lg">
-      <div className="item-menu-logo h-full w-1/5">Img</div>
+      {/* <div className="item-menu-logo h-full w-1/5">Img</div> */}
       <div className="item-menu-info flex flex-col w-4/5">
-        <div className="flex flex-col">
+        {/* TODO: Please remove the pl-2 pt-2 or re-adjust it accordingly once images are added */}
+        <div className="flex flex-col pl-2 pt-2">
           <p className="text-xl">{menuItem.name}</p>
           <p className="text-sm">Serves {menuItem.servings}</p>
           <p>⭐{menuItem.ratings}</p>

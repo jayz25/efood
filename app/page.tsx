@@ -11,7 +11,7 @@ import { RootState } from "@/redux/store";
 const inter = Inter({ subsets: ["latin"] });
 
 async function getRestaurentEntities(location: string) {
-  const res = await fetch(`http://localhost:8000/api/restaurents/${location}/`);
+  const res = await fetch(`http://127.0.0.1:8000/api/restaurents/${location}/`);
   return res.json();
 }
 
