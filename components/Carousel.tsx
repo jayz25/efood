@@ -3,9 +3,13 @@
 import Link from "next/link";
 import CarouselCard from "./CarouselCard";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 
 export default function Carousel({ cuisines }) {
+
+  const currentLocation = useSelector((state: RootState) => state.location.location);
 
   const handlePreviousButtonClick = () => {
     const wrapperEl = document.querySelector(".carousel-main-container");
@@ -45,7 +49,7 @@ export default function Carousel({ cuisines }) {
       <div className="carousel-main-container flex flex-row overflow-hidden">
         {cuisines.map((card, index) => {
           return (
-            <Link href={`restaurents/${card.cuisine}`}>
+            <Link href={`restaurents/${currentLocation}/${card.cuisine}`}>
               <CarouselCard cardInfo={card} />
             </Link>
           );
