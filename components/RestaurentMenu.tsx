@@ -3,7 +3,7 @@
 import MenuCard from "./MenuCard";
 
 async function getMenu(menuId) {
-  const fetchMenu = await fetch(`http://127.0.0.1:8000/api/menu/${menuId}/`);
+  const fetchMenu = await fetch(`https://efood-api-o2ow.onrender.com/api/menu/${menuId}/`);
   return fetchMenu.json();
 }
 export default async function RestaurentMenu({menuId}) {
