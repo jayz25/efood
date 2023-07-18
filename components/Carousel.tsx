@@ -49,7 +49,7 @@ export default function Carousel({ cuisines }) {
       <div className="carousel-main-container flex flex-row overflow-hidden">
         {cuisines.map((card, index) => {
           return (
-            <Link href={`restaurents/${currentLocation}/${card.cuisine}`}>
+            <Link key={index} href={`restaurents/${currentLocation}/${card.cuisine}`}>
               <CarouselCard cardInfo={card} />
             </Link>
           );

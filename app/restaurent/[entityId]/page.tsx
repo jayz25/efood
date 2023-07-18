@@ -4,7 +4,7 @@ import Image from "next/image";
 
 
 async function getRestaurentInfo(restaurentId) {
-  const res = await fetch(`http://127.0.0.1:8000/api/restaurents/getSingle/${restaurentId}/`);
+  const res = await fetch(`https://efood-api-o2ow.onrender.com/api/restaurents/getSingle/${restaurentId}/`);
   return res.json();
 }
 

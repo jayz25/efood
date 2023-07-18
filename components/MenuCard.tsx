@@ -2,7 +2,7 @@ import { Url } from "url";
 import MenuItemCard, { Dish } from "./MenuItemCard";
 
 async function getDish(dishId) {
-  const res = await fetch(`http://127.0.0.1:8000/api/dishes/getSingle/${dishId}/`)
+  const res = await fetch(`https://efood-api-o2ow.onrender.com/api/dishes/getSingle/${dishId}/`)
   return res.json();
 }
 

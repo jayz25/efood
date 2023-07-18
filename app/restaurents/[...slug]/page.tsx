@@ -1,7 +1,7 @@
 import { EntityPellete } from "@/components/EntityPallete";
 
 async function getRestaurentEntities(location: string) {
-    const res = await fetch(`http://127.0.0.1:8000/api/restaurents/${location}/`);
+    const res = await fetch(`https://efood-api-o2ow.onrender.com/api/restaurents/${location}/`);
     return res.json();
 }
 
