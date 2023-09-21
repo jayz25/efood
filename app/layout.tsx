@@ -1,12 +1,12 @@
 import { TopNav } from '@/components/TopNav'
 import './globals.css'
 import AppProvider from '@/providers/provider'
-import CheckoutBar from '@/components/CheckoutBar'
 
 export default function RootLayout({
   children,
+  session
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
 }) {
   return (
     <html lang="en">
@@ -17,9 +17,9 @@ export default function RootLayout({
 
       <head />
       <body>
-        <AppProvider>
-          <TopNav />
-          {children}
+        <AppProvider session={session}>
+            <TopNav />
+            {children}
         </AppProvider>
       </body>
 

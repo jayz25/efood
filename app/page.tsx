@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import AppProvider from "@/providers/provider";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,8 @@ async function getCuisines() {
 }
 
 export default function Page() {
+  const {data: session} = useSession();
+  console.log('d', session);
   const dataCards = [
     { name: "Sunsetta" },
     { name: "Apple" },
