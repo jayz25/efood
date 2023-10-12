@@ -18,7 +18,10 @@ export default function RootLayout({
       <head />
       <body>
         <AppProvider>
+          <div className='w-full flex justify-center'>
+
           <TopNav />
+          </div>
           {children}
         </AppProvider>
       </body>

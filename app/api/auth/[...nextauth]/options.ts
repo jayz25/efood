@@ -31,4 +31,7 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: "/api/auth/signin",
+  },
 };

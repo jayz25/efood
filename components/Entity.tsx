@@ -7,7 +7,7 @@ export const Entity = ({ entity }) => {
         <div className="entity-pallete_entity-single p-5 h-80 hover:p-4 transition duration-300 ease-out hover:ease-in">
             <div className="flex bg-cover bg-center h-full w-full flex-col justify-end rounded-lg hover:shadow-2xl"
                 style={{ backgroundImage: `url(${entity.image_url})` }}>
-                <div className="restaurant-info-container bg-amber-200 bg-opacity-95  flex h-2/5 w-full flex-col p-2 rounded-br-lg rounded-bl-lg">
+                <div className="restaurant-info-container bg-slate-400 bg-opacity-80 flex h-2/5 w-full flex-col p-2 rounded-br-lg rounded-bl-lg">
                     <div className="font-medium text-2xl">{entity.name}</div>
                     <div className="font-medium text-sm">
                         {/* TODO: Find a better way to achieve this comma and space thing for entities */}
