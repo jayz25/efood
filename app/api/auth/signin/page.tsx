@@ -11,7 +11,7 @@ const LoginPage = () => {
       username: userName.current,
       password: pass.current,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "http://localhost:3000/",
     });
   };
 

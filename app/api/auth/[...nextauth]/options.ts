@@ -18,8 +18,8 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        const user = { id: "32", name: "Username", password: "Password" };
-
+        // This is where we can fetch the credentials from database
+        const user = { id: "32", name: "Jayesh", password: "123" };
         if (
           credentials?.username === user.name &&
           credentials?.password === user.password
