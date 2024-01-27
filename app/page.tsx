@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import AppProvider from "@/providers/provider";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -117,6 +118,7 @@ export default function Page() {
   const location = useSelector((state: RootState)=> state.location.location);
   const [restaurents, setRestaurents] = useState([]);  
   const [cuisines, setCuisines] = useState([]);
+  const {data: session} = useSession();
 
   // Find a better way to fetch data 
     useEffect(() => {
@@ -132,7 +134,8 @@ export default function Page() {
     }, [location]);
 
   return (
-    <AppProvider>
+    <AppProvider>\
+      {session && <div>hello {session.user?.name}</div>}
       <main className="flex justify-center">
         <div className="flex flex-col max-w-full xl:max-w-screen-xl justify-center">
           <div className="w-full">
