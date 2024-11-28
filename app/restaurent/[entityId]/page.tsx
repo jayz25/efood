@@ -24,9 +24,9 @@ export default async function Home({ params }) {
   }
 
   // Fallback for undefined or incomplete data
-  if (!restaurentInfo || !restaurentInfo.name) {
-    return <div>Restaurant information is not available.</div>;
-  }
+  // if (!restaurentInfo || !restaurentInfo.name) {
+  //   return <div>Restaurant information is not available.</div>;
+  // }
 
   return (
     <>
